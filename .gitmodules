@@ -1,6 +1,3 @@
-[submodule "dockerfiles"]
-	path = dockerfiles
-	url = https://github.com/pelias/dockerfiles.git
 [submodule "mapzen.dockerfiles"]
 	path = mapzen.dockerfiles
 	url = https://github.com/pelias/dockerfiles.git
