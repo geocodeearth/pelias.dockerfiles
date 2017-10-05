@@ -2,7 +2,7 @@ if [ $1 == 'ALL' ]
 then
 
     echo kill ALL CONTAINERS
-    docker kill $(docker ps -q)
+    docker kill $(docker ps -aq)
 
 else
 
