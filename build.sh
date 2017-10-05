@@ -6,8 +6,8 @@
 docker-compose down || true;
 
 # rebuild the images
-docker-compose build;
+#docker-compose build;
+docker-compose pull;
 
 time sh ./prep_data.sh;
-
 time sh ./run_services.sh;
