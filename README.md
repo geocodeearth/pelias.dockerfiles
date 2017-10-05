@@ -1,5 +1,7 @@
-# pelias.transit.loader
-Load transit landmarks, stops and street intersections into the Pelias geocoder.
+# pelias.dockerfiles
+Load both Pelias, and also transit landmarks
+
+git update-index --assume-unchanged pelias.json
 
 
 ### Note: you might need to set an env var to find pelis.json (if you keep getting 'transit' not in your schema errors, try the following):
