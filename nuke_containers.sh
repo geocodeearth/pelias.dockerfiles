@@ -3,7 +3,8 @@
 
 docker ps --all --quiet --no-trunc --filter "status=exited" | xargs --no-run-if-empty docker rm
 docker images --quiet --filter "dangling=true" | xargs --no-run-if-empty docker rmi
-docker rmi -f $(docker images | awk '{print $3}' | grep -v IMAGE)
+docker rm $(docker ps -a -q)
+docker rmi $(docker images -q)
 docker volume ls | awk '{print $2}' | xargs docker volume rm
 
 docker ps
