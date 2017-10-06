@@ -1,5 +1,5 @@
 # 
-./stop_services.sh STOP_ES
+./stop_services.sh ALL
 
 docker ps --all --quiet --no-trunc --filter "status=exited" | xargs --no-run-if-empty docker rm
 docker images --quiet --filter "dangling=true" | xargs --no-run-if-empty docker rmi
