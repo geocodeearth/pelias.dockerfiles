@@ -70,7 +70,7 @@ services:
   transit:
     depends_on: [ "baseimage" ]
     image: ott/pelias.transit.loader
-    container_name: pelias_openaddresses
+    container_name: pelias_transit
     networks: [ "pelias" ]
     volumes:
       - "./pelias.json:/code/pelias.json"

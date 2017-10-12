@@ -1,0 +1,50 @@
+version: '2'
+networks:
+  pelias:
+    driver: bridge
+services:
+  baseimage:
+    image: pelias/baseimage
+    container_name: pelias_baseimage
+    build: baseimage
+  schema:
+    depends_on: [ "baseimage" ]
+    image: pelias/schema
+    container_name: pelias_schema
+    networks: [ "pelias" ]
+    volumes:
+      - "./pelias.json:/code/pelias.json"
+  whosonfirst:
+    depends_on: [ "baseimage" ]
+    image: pelias/whosonfirst
+    container_name: pelias_whosonfirst
+    networks: [ "pelias" ]
+    volumes:
+      - "./pelias.json:/code/pelias.json"
+      - "${DATA_DIR}:/data"
+  transit:
+    depends_on: [ "baseimage" ]
+    image: ott/pelias.transit.loader
+    container_name: pelias_transit
+    networks: [ "pelias" ]
+    volumes:
+      - "./pelias.json:/code/pelias.json"
+      - "${DATA_DIR}:/data"
+  elasticsearch:
+    image: pelias/elasticsearch
+    container_name: pelias_elasticsearch
+    build: elasticsearch/2.4
+    restart: always
+    ports: [ "9200:9200", "9300:9300" ]
+    networks: [ "pelias" ]
+    volumes:
+      - "${DATA_DIR}/elasticsearch:/usr/share/elasticsearch/data"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    mem_limit: 1g
+    cap_add: [ "IPC_LOCK" ]
