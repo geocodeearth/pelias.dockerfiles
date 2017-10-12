@@ -6,7 +6,7 @@ services:
   baseimage:
     image: pelias/baseimage
     container_name: pelias_baseimage
-    build: baseimage
+    build: ../baseimage
   schema:
     depends_on: [ "baseimage" ]
     image: pelias/schema
@@ -24,7 +24,7 @@ services:
       - "${DATA_DIR}:/data"
   transit:
     depends_on: [ "baseimage" ]
-    image: ott/pelias.transit.loader
+    image: opentransittools/pelias.transit.loader
     container_name: pelias_transit
     networks: [ "pelias" ]
     volumes:
@@ -33,7 +33,7 @@ services:
   elasticsearch:
     image: pelias/elasticsearch
     container_name: pelias_elasticsearch
-    build: elasticsearch/2.4
+    build: ../elasticsearch/2.4
     restart: always
     ports: [ "9200:9200", "9300:9300" ]
     networks: [ "pelias" ]
