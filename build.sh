@@ -1,5 +1,10 @@
 #!/bin/bash
-[ -z "$DATA_DIR" ] && echo "env var DATA_DIR not set" && exit 1;
+if [ -z "$DATA_DIR" ]
+then
+    export DATA_DIR=~/data
+    mkdir $DATA_DIR
+fi
+
 
 # bring containers down
 # note: the -v flag deletes ALL persistent data volumes

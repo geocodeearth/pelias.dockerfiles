@@ -16,7 +16,10 @@ fi
 docker-compose run --rm schema npm run create_index;
 
 # download all the data to be used by imports
-docker-compose run --rm whosonfirst npm run download &
+. ./who_date.sh
+if [ $WHO_DIFF -lt $WHO_AGE ]; then
+  docker-compose run --rm whosonfirst npm run download &
+fi
 docker-compose run --rm openaddresses npm run download &
 docker-compose run --rm openstreetmap npm run download &
 docker-compose run --rm interpolation npm run download-tiger &
