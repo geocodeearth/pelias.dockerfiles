@@ -69,7 +69,7 @@ services:
       - "${DATA_DIR}:/data"
   transit:
     depends_on: [ "baseimage" ]
-    image: ott/pelias.transit.loader
+    image: opentransittools/pelias.transit.loader
     container_name: pelias_transit
     networks: [ "pelias" ]
     volumes:
