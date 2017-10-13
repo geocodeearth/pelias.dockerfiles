@@ -16,7 +16,7 @@ fi
 docker-compose run --rm schema npm run create_index;
 
 # download all the data to be used by imports
-docker-compose run --rm whosonfirst npm run download &
+#docker-compose run --rm whosonfirst npm run download &
 docker-compose run --rm transit npm run download &
 
 wait;
