@@ -17,7 +17,7 @@ docker-compose run --rm schema npm run create_index;
 
 # download all the data to be used by imports
 . ../who_date.sh
-if [ $WHO_DIFF -lt $WHO_AGE ]; then
+if $UPDATE_WHO ; then
   docker-compose run --rm whosonfirst npm run download &
 fi
 docker-compose run --rm transit npm run download &
