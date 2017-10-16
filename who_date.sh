@@ -10,7 +10,7 @@ else
   WHO_AGE=${WHO_AGE:=86400}
   WHO_NOW=`date +%s`
   let WHO_DIFF=$WHO_NOW-$WHO_FILETIME;
-  if [ $WHO_DIFF -lt $WHO_AGE ]; then
+  if [ $WHO_DIFF -gt $WHO_AGE ]; then
     UPDATE_WHO=true
   fi
 fi
