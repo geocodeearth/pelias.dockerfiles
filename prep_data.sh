@@ -34,10 +34,10 @@ docker-compose run --rm polylines bash ./docker_extract.sh;
 docker-compose run --rm placeholder npm run extract;
 docker-compose run --rm placeholder npm run build;
 
-docker-compose run --rm interpolation bash ./docker_build.sh &
-docker-compose run --rm openaddresses npm start &
-docker-compose run --rm openstreetmap npm start &
-docker-compose run --rm polylines npm start &
-docker-compose run --rm transit npm start &
+docker-compose run --rm interpolation bash ./docker_build.sh;
+docker-compose run --rm openaddresses npm start;
+docker-compose run --rm openstreetmap npm start;
+docker-compose run --rm polylines npm start;
+docker-compose run --rm transit npm start;
 
 wait;
