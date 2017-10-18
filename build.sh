@@ -15,4 +15,7 @@ docker-compose down || true;
 docker-compose pull;
 
 time sh ./prep_data.sh;
+wait;
+time sh ./load_data.sh;
+wait
 time sh ./run_services.sh;
