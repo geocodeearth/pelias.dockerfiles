@@ -12,16 +12,34 @@ if ! [ $(curl --output /dev/null --silent --head --fail http://localhost:9200) ]
     done
 fi
 
+sleep 5
+
+# create the index in elasticsearch before importing data
+docker-compose run -T --rm schema npm run create_index &
+wait;
 
 # polylines data prep requires openstreetmap data, so wait until that's done to start this
 # but then wait to run the polylines importer process until this is finished
-docker-compose run --rm polylines bash ./docker_extract.sh;
+docker-compose run -T --rm polylines bash ./docker_extract.sh &
+wait;
 
-docker-compose run --rm placeholder npm run extract;
-docker-compose run --rm placeholder npm run build;
+docker-compose run -T --rm placeholder npm run extract &
+docker-compose run -T --rm placeholder npm run build &
+wait;
 
-docker-compose run --rm interpolation bash ./docker_build.sh;
-docker-compose run --rm openaddresses npm start;
-docker-compose run --rm openstreetmap npm start;
-docker-compose run --rm polylines npm start;
-docker-compose run --rm transit npm start;
+
+docker-compose run -T --rm interpolation bash ./docker_build.sh &
+wait;
+
+docker-compose run -T --rm openaddresses npm start &
+wait;
+
+docker-compose run -T --rm openstreetmap npm start &
+wait;
+
+docker-compose run -T --rm polylines npm start &
+wait;
+
+docker-compose run -T --rm transit npm start &
+wait;
+
