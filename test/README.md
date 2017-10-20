@@ -1,28 +1,11 @@
-# pelias.dockerfiles
+# pelias.dockerfiles test directory
 
-Load both Pelias, and also Transit landmarks (GTFS, intersections from OSM, landmarks from .csv files, etc...)
+This is for testing just the transit loader in a Docker environment.
+There is a dependency on WoF data, such that we also do the point in admin districts.
 
-1. pre-reqs: have docker and docker-compose installed on your system, plus plenty of disk and memory
-1. export DATA_DIR=$PWD/data
-1. mkdir $DATA_DIR
-1. git clone --recursive https://github.com/OpenTransitTools/pelias.dockerfiles.git
-1. cd pelias.dockerfiles
-1. emacs pelias.json # add your MapZen key where instructed in pelias.json (download WoF data from MapZen)
-1. git update-index --assume-unchanged pelias.json
-1. ./build.sh
-
-Test:
-1. curl http://localhost:4000/v1/search?text=888%20SE%20Lambert%20St # should see "match_type": "interpolated" somewhere in there (that's good)
-1. http://localhost:9200/pelias/_search?pretty=true&q=layer:intersections
-
-Update:
-1. cd pelias.dockerfiles
-1. git submodule update --init --recursive
-1. git pull
-1. ./nuke_containers.sh # use with caution, will drop most / all of your non-Pelias Docker env
-1. ./build.sh
-
-Notes: 
-1. [pelias.transit.loader](https://hub.docker.com/r/opentransittools/pelias.transit.loader) docker image on Docker Hub
-1. [pelias.transit.loader](https://github.com/OpenTransitTools/pelias.transit.loader) code on GitHub
-1. TriMet's Staging Server Instance: https://ws-st.trimet.org/pelias/v1/search?api_key=YourTriMetApiKey&text=stops%202
+1. Assumes you have $DATA_DIR set, and your ../pelias.json file has a proper MapZen api key (see ../README.md for more). 
+1. ./prep_data.sh
+1. you should see a bunch of stuff install (including Elasticsearch), including the OTT pelias.transit.loader.  
+1. the transit loader loader will then download GTFS data, processing the points thru WoF, and finally inserting things 
+into Elasticsearch.
+1. Calling ES: http://localhost:9200/pelias/_search?pretty=true&q=* should then return transit stops data, etc...   

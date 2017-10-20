@@ -23,7 +23,5 @@ fi
 docker-compose run --rm transit npm run download &
 
 wait;
-
 docker-compose run --rm transit npm start &
 
-wait;
