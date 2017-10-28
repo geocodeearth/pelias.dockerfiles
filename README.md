@@ -13,7 +13,8 @@ Load both Pelias, and also Transit landmarks (GTFS, intersections from OSM, land
 
 Test:
 1. curl http://localhost:4000/v1/search?text=888%20SE%20Lambert%20St # should see "match_type": "interpolated" somewhere in there (that's good)
-1. http://localhost:9200/pelias/_search?pretty=true&q=layer:intersections
+1. curl http://localhost:4000/v1/search?text=stop%202 # should see "match_type": a bunch of records that are stop locations
+1. curl http://localhost:9200/pelias/_search?pretty=true&q=layer:intersections
 
 Update:
 1. cd pelias.dockerfiles
@@ -26,3 +27,4 @@ Notes:
 1. [pelias.transit.loader](https://hub.docker.com/r/opentransittools/pelias.transit.loader/builds/) docker image on Docker Hub
 1. [pelias.transit.loader](https://github.com/OpenTransitTools/pelias.transit.loader) code on GitHub
 1. TriMet's Staging Server Instance: https://ws-st.trimet.org/pelias/v1/search?api_key=YourTriMetApiKey&text=stops%202
+
