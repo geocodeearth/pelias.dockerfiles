@@ -13,6 +13,8 @@ Load both Pelias, and also Transit landmarks (GTFS, intersections from OSM, land
 
 Test:
 1. curl http://localhost:4000/v1/search?text=888%20SE%20Lambert%20St # should see "match_type": "interpolated" somewhere in there (that's good)
+1. curl http://localhost:4000/v1/search?text=stop%202 # should see "match_type": a bunch of records that are stop locations
+1. curl http://localhost:9200/pelias/_search?pretty=true&q=layer:intersections
 1. Call ES directly: http://localhost:9200/pelias/_search?pretty=true&q=layer:stops
 1. More ES: http://localhost:9200/pelias/_search?pretty=true&q=*
 

@@ -6,8 +6,10 @@ There is a dependency on WoF data, such that we also do the point in admin distr
 @TODO: possibly add automated unit / integration testing here...
 
 1. Assumes you have $DATA_DIR set, and your ../pelias.json file has a proper MapZen api key (see ../README.md for more). 
-1. ./load_data.sh
-1. you should see a bunch of stuff install (including Elasticsearch), including the OTT pelias.transit.loader.  
-1. the transit loader loader will then download GTFS data, processing the points thru WoF, and finally inserting things 
-into Elasticsearch.
+1. cd pelias.dockerfiles/test
+1. git submodule update --init --recursive
+1. emacs pelias.json # add your MapZen key where instructed in pelias.json (download WoF data from MapZen)
+1. git update-index --assume-unchanged pelias.json
+1. ./prep_data.sh
+1. curl http://localhost:9200/pelias/_search?pretty=true&q=layer:intersections
 1. Calling ES: http://localhost:9200/pelias/_search?pretty=true&q=* should then return transit stops data, etc...   
