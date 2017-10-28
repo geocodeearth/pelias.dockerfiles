@@ -23,6 +23,6 @@ Update:
 1. ./build.sh
 
 Notes: 
-1. [pelias.transit.loader](https://hub.docker.com/r/opentransittools/pelias.transit.loader) docker image on Docker Hub
+1. [pelias.transit.loader](https://hub.docker.com/r/opentransittools/pelias.transit.loader/builds/) docker image on Docker Hub
 1. [pelias.transit.loader](https://github.com/OpenTransitTools/pelias.transit.loader) code on GitHub
 1. TriMet's Staging Server Instance: https://ws-st.trimet.org/pelias/v1/search?api_key=YourTriMetApiKey&text=stops%202
