@@ -35,6 +35,9 @@ docker-compose run --rm polylines bash ./docker_extract.sh;
 docker-compose run --rm placeholder npm run extract;
 docker-compose run --rm placeholder npm run build;
 wait;
+
+# NOTE: w/out the background (ampersand) processes and wait, the Pelias loader will start all
+#       loaders, which isn't good if the WoF data is the whole world (you'll run out of RAM)
 docker-compose run --rm interpolation bash ./docker_build.sh &
 wait;
 docker-compose run --rm openaddresses npm start &
