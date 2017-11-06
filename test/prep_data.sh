@@ -13,6 +13,7 @@ if ! [ $(curl --output /dev/null --silent --head --fail http://localhost:9200) ]
 fi
 
 # create the index in elasticsearch before importing data
+curl -XDELETE 'localhost:9200/pelias?pretty'
 docker-compose run --rm schema npm run create_index;
 
 # download all the data to be used by imports
@@ -23,4 +24,3 @@ fi
 
 docker-compose run --rm transit npm run download;
 docker-compose run --rm transit npm start;
-
