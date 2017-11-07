@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# bring containers down
+docker-compose down || true;
+
+# pull the images
+docker-compose pull;
+
 # start elasticsearch if it's not already running
 if ! [ $(curl --output /dev/null --silent --head --fail http://localhost:9200) ]; then
     docker-compose up -d elasticsearch;
