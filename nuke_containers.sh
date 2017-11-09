@@ -1,6 +1,9 @@
 # 
 ./stop_services.sh ALL
 
+docker-compose down
+wait;
+
 docker ps --all --quiet --no-trunc --filter "status=exited" | xargs --no-run-if-empty docker rm
 docker images --quiet --filter "dangling=true" | xargs --no-run-if-empty docker rmi
 docker rm $(docker ps -a -q)
