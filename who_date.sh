@@ -1,6 +1,6 @@
 # used by scripts to tell whether we have new Who's on First data (if new, probably don't want to load)
 WHO_FILE=${WHO_FILE:="$DATA_DIR/whosonfirst"}
-WHO_FILETIME=`stat -c %Y $WHO_FILE`
+WHO_FILETIME=`stat -c %Y $WHO_FILE &> /dev/null`
 
 UPDATE_WHO=false
 if [ -z "$WHO_FILETIME" ];
