@@ -7,8 +7,6 @@ Load both Pelias, and also Transit landmarks (GTFS, intersections from OSM, land
 1. mkdir $DATA_DIR
 1. git clone --recursive https://github.com/OpenTransitTools/pelias.dockerfiles.git
 1. cd pelias.dockerfiles
-1. emacs pelias.json # add your MapZen key where instructed in pelias.json (download WoF data from MapZen)
-1. git update-index --assume-unchanged pelias.json
 1. ./build.sh
 
 Test:
@@ -25,7 +23,7 @@ Update:
 1. ./nuke_containers.sh # use with caution, will drop most / all of your non-Pelias Docker env
 1. ./build.sh
 
-Notes: 
+Notes:
 1. [pelias.transit.loader](https://hub.docker.com/r/opentransittools/pelias.transit.loader/builds/) docker image on Docker Hub
 1. [pelias.transit.loader](https://github.com/OpenTransitTools/pelias.transit.loader) code on GitHub
 1. TriMet's Staging Server Instance: https://ws-st.trimet.org/pelias/v1/search?api_key=YourTriMetApiKey&text=stops%202
