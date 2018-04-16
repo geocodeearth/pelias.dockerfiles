@@ -115,10 +115,10 @@ north, N
 south, S
 east, E
 west, W
-north west, NW
-north east, NE
-south west, SW
-south east, SE
+north west => northwest
+north east => northeast
+south west => southwest
+south east => southeast
 northwest, NW
 northeast, NE
 southwest, SW
