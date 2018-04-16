@@ -28,6 +28,9 @@
       },
       "interpolation": {
         "url": "http://interpolation:4300"
+      },
+      "libpostal": {
+        "url": "http://libpostal:8080"
       }
     },
     "defaultParameters": {
