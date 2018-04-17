@@ -2,6 +2,7 @@
 
 docker-compose kill;
 docker-compose down;
+rm -rf "${DATA_DIR}/elasticsearch/*";
 
 # start elasticsearch if it's not already running
 if ! [ $(curl --output /dev/null --silent --head --fail http://localhost:9200) ]; then
