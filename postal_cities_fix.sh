@@ -66,6 +66,24 @@ fi
 # patch geojson files to update hierarchy
 export -f addPortlandLocalAdmin
 export -f addHierarchyValue
-findDescendants 'county_id' 102082213 | xargs -n 1 -P 32 bash -c 'addPortlandLocalAdmin "$@"' _;
+
+# Washington County
 findDescendants 'county_id' 102082215 | xargs -n 1 -P 32 bash -c 'addPortlandLocalAdmin "$@"' _;
+
+# Clackamas County
+findDescendants 'county_id' 102082213 | xargs -n 1 -P 32 bash -c 'addPortlandLocalAdmin "$@"' _;
+
+# Multnomah County
 findDescendants 'county_id' 102081631 | xargs -n 1 -P 32 bash -c 'addPortlandLocalAdmin "$@"' _;
+
+# Yamhill County
+findDescendants 'county_id' 102081613 | xargs -n 1 -P 32 bash -c 'addPortlandLocalAdmin "$@"' _;
+
+# Marion County
+findDescendants 'county_id' 102082219 | xargs -n 1 -P 32 bash -c 'addPortlandLocalAdmin "$@"' _;
+
+# Polk County
+findDescendants 'county_id' 102081601 | xargs -n 1 -P 32 bash -c 'addPortlandLocalAdmin "$@"' _;
+
+# Clark County (WA)
+findDescendants 'county_id' 102084251 | xargs -n 1 -P 32 bash -c 'addPortlandLocalAdmin "$@"' _;
