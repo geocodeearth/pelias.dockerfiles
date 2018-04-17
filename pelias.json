@@ -117,7 +117,7 @@
     },
     "geonames": {
       "datapath": "/data/geonames",
-      "countryCode": "ALL"
+      "countryCode": "US"
     },
     "openstreetmap": {
       "download": [
@@ -161,9 +161,8 @@
         "tiger": {
           "datapath": "/data/tiger",
           "states": [
-            {
-              "state_code": 41
-            }
+            { "state_code": 41 },
+            { "state_code": 53 }
           ]
         }
       }
