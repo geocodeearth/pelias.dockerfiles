@@ -131,3 +131,8 @@ clackamus, clackamas
 clack, clackamas
 p-town, portland
 casscade, cascade
+
+# street names
+Tualatin Valley Hwy,TV Hwy,TVH,TVHWY
+Beaverton-Hillsdale Hwy,Beaverton- Hillsdale Hwy,BH Hwy,BHH
+MLK,M L King,Martin Luther King
