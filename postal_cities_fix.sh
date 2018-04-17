@@ -41,7 +41,7 @@ function findDescendants {
 
 # create geojson file
 mkdir -p "${WOF_DATA}/999/999/999";
-cp "${WOF_DATA}/101/715/829/101715829.geojson" "${WOF_DATA}/999/999/999/999999999.geojson";.
+cp "${WOF_DATA}/101/715/829/101715829.geojson" "${WOF_DATA}/999/999/999/999999999.geojson";
 
 # generate meta file for localadmin
 head -n1 "${WOF_META}/wof-locality-latest.csv" > "${WOF_META}/wof-localadmin-latest.csv";
@@ -63,8 +63,9 @@ if type gsed >/dev/null
     sed -i 's/locality/localadmin/g' "${WOF_META}/wof-localadmin-latest.csv";
 fi
 
-# geojson files to update hierarchy
-findDescendants 'county_id' 102082213 | while read -r filename; do addPortlandLocalAdmin "${filename}"; done &
-findDescendants 'county_id' 102082215 | while read -r filename; do addPortlandLocalAdmin "${filename}"; done &
-findDescendants 'county_id' 102081631 | while read -r filename; do addPortlandLocalAdmin "${filename}"; done &
-wait
+# patch geojson files to update hierarchy
+export -f addPortlandLocalAdmin
+export -f addHierarchyValue
+findDescendants 'county_id' 102082213 | xargs -n 1 -P 32 bash -c 'addPortlandLocalAdmin "$@"' _;
+findDescendants 'county_id' 102082215 | xargs -n 1 -P 32 bash -c 'addPortlandLocalAdmin "$@"' _;
+findDescendants 'county_id' 102081631 | xargs -n 1 -P 32 bash -c 'addPortlandLocalAdmin "$@"' _;
