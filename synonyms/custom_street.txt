@@ -1,18 +1,23 @@
 
 Tualatin Valley Hwy,TV Hwy,TVH,TVHWY
-Beaverton-Hillsdale Hwy,Beaverton- Hillsdale Hwy,BH Hwy,BHH
-MLK,M L King,Martin Luther King
+Beaverton Hillsdale HWY,Beaverton-Hillsdale HWY,BH HYW,BHH
+Beaverton Hillsdale,Beaverton-Hillsdale,BH
+Martin Luther King,ML King,M L King,MLK
 Doernbecher,Dornbecher,Doernbecker,Dornbecker,Dornbecka
-NAYA,Native American Youth
-TC ,Transit Center
-PR ,Park Ride,Park & Ride, Park and Ride
+Native American Youth => NAYA
+Transit Center => TC
+Park Ride => PR
+Park & Ride => PR
+Park and Ride => PR
 caeser,cesar,chavez,39th
 metro,portland
 oregon,or
 carshare,car2go,Zipcar,Flexcar,GetAround,ucarshare,uhaul,hertz,wecar,enterprise
 ticket,fare,outlet,store,retail
 dmv,motor,vehicles
-cc,court house,court-house,court,courts,courth,courthouse
+court house => courthouse
+court-house => courthouse
+cc,court,courts,courth,courthouse
 law,jail,prison,jail,courthouse,enforcement,juvenile,justice,juvenile,correctional
 jewvi,juvi,juvenile
 
@@ -75,7 +80,7 @@ JCT,JCTION,JCTN,JUNCTION,JUNCTN,JUNCTON,JCTNS,JCTS,JUNCTIONS
 LAKE,LK,LAKES,LKS
 LANDING,LNDG,LNDNG
 LA,LANE,LANES,LN
-LOOP, LOOPS,LP
+LOOP,LOOPS,LP
 MANOR,MNR,MANORS,MNRS
 MDW,MEADOW,MDWS,MEADOWS,MEDOWS
 MILL,ML,MILLS,MLS
@@ -123,3 +128,6 @@ northwest, NW
 northeast, NE
 southwest, SW
 southeast, SE
+
+broadway st => broadway
+broadway street => broadway
