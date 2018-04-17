@@ -9,21 +9,27 @@ services:
   baseimage:
     image: pelias/baseimage
     container_name: pelias_baseimage
-    build: baseimage
   libpostal_baseimage:
     image: pelias/libpostal_baseimage
     container_name: pelias_libpostal_baseimage
-    build: libpostal_baseimage
+  libpostal:
+    image: pelias/go-whosonfirst-libpostal
+    container_name: pelias_libpostal
+    restart: always
+    ports: [ "8080:8080" ]
+    networks: [ "pelias" ]
   schema:
     depends_on: [ "baseimage" ]
-    image: pelias/schema
+    image: pelias/schema:portland-synonyms
     container_name: pelias_schema
     networks: [ "pelias" ]
     volumes:
       - "./pelias.json:/code/pelias.json"
+      - "./synonyms/custom_name.txt:/code/pelias/schema/synonyms/custom_name.txt"
+      - "./synonyms/custom_street.txt:/code/pelias/schema/synonyms/custom_street.txt"
   api:
     depends_on: [ "baseimage", "libpostal_baseimage" ]
-    image: pelias/api
+    image: pelias/api:master
     container_name: pelias_api
     restart: always
     environment: [ "PORT=4000" ]
@@ -53,7 +59,7 @@ services:
       - "${DATA_DIR}:/data"
   openstreetmap:
     depends_on: [ "baseimage" ]
-    image: pelias/openstreetmap
+    image: pelias/openstreetmap:airport_codes
     container_name: pelias_openstreetmap
     networks: [ "pelias" ]
     volumes:
@@ -69,7 +75,7 @@ services:
       - "${DATA_DIR}:/data"
   transit:
     depends_on: [ "baseimage" ]
-    image: opentransittools/pelias.transit.loader
+    image: pelias/transit:master
     container_name: pelias_transit
     networks: [ "pelias" ]
     volumes:
@@ -95,7 +101,7 @@ services:
       - "./pelias.json:/code/pelias.json"
       - "libpostaldata:/usr/share/libpostal"
       - "${DATA_DIR}:/data"
-  pip-service:
+  pip:
     depends_on: [ "baseimage" ]
     image: pelias/pip-service
     container_name: pelias_pip-service
@@ -119,7 +125,6 @@ services:
   elasticsearch:
     image: pelias/elasticsearch
     container_name: pelias_elasticsearch
-    build: elasticsearch/2.4
     restart: always
     ports: [ "9200:9200", "9300:9300" ]
     networks: [ "pelias" ]
