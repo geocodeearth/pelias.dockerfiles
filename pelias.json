@@ -47,61 +47,68 @@
       "feeds": [
         {
           "layerId": "landmarks",
-          "url": "./test/landmarks.csv",
-          "filename": "landmarks.csv",
+          "url": "http://maps7.trimet.org/pelias/transit/TRIMET-landmarks.csv",
+          "filename": "TRIMET-landmarks.csv",
           "agencyId": "TRIMET",
           "agencyName": "TriMet"
         },
         {
           "layerId": "intersections",
-          "url": "./test/intersections.csv",
+          "url": "http://maps7.trimet.org/pelias/transit/intersections.csv",
           "filename": "intersections.csv"
         },
         {
+          "layerId": "fare",
+          "url": "https://developer.trimet.org/ws/v1/retail_outlet?appID=8EB2B259743166EF7569C6C78",
+          "filename": "HOP-retailers.json",
+          "agencyId": "TRIMET",
+          "agencyName": "TriMet"
+        },
+        {
           "layerId": "stops",
-          "url": "http://developer.trimet.org/schedule/gtfs.zip",
+          "url": "http://maps7.trimet.org/pelias/transit/TRIMET.zip",
           "filename": "TRIMET-stops.txt",
           "agencyId": "TRIMET",
           "agencyName": "TriMet"
         },
         {
           "layerId": "stops",
-          "url": "http://www.c-tran.com/images/Google/GoogleTransitUpload.zip",
+          "url": "http://maps7.trimet.org/pelias/transit/C-TRAN.zip",
           "filename": "C-TRAN-stops.txt",
           "agencyId": "C-TRAN",
           "agencyName": "C-TRAN"
         },
         {
           "layerId": "stops",
-          "url": "http://oregon-gtfs.com/gtfs_data/rideconnection-or-us/rideconnection-or-us.zip",
+          "url": "http://maps7.trimet.org/pelias/transit/RIDECONNECTION.zip",
           "filename": "RIDECONNECTION-stops.txt",
           "agencyId": "RIDECONNECTION",
           "agencyName": "Ride Connection"
         },
         {
           "layerId": "stops",
-          "url": "http://cherriots.org/developer/gtfs.zip",
+          "url": "http://maps7.trimet.org/pelias/transit/CHERRIOTS.zip",
           "filename": "CHERRIOTS-stops.txt",
           "agencyId": "CHERRIOTS",
           "agencyName": "Cherriots / Salem-Keizer Transit"
         },
         {
           "layerId": "stops",
-          "url": "http://oregon-gtfs.com/gtfs_data/sandy-or-us/sandy-or-us.zip",
+          "url": "http://maps7.trimet.org/pelias/transit/SAM.zip",
           "filename": "SAM-stops.txt",
           "agencyId": "SAM",
           "agencyName": "Sandy Area Metro"
         },
         {
           "layerId": "stops",
-          "url": "http://data.trilliumtransit.com/gtfs/wilsonville-or-us/wilsonville-or-us.zip",
+          "url": "http://maps7.trimet.org/pelias/transit/SMART.zip",
           "filename": "SMART-stops.txt",
           "agencyId": "SMART",
           "agencyName": "SMART"
         },
         {
           "layerId": "stops",
-          "url": "http://oregon-gtfs.com/gtfs_data/swanisland-or-us/swanisland-or-us.zip",
+          "url": "http://maps7.trimet.org/pelias/transit/SWAN.zip",
           "filename": "SWAN-stops.txt",
           "agencyId": "SWAN",
           "agencyName": "Swan Island Evening Shuttle Service"
@@ -115,18 +122,26 @@
     "openstreetmap": {
       "download": [
         {
-          "sourceURL": "https://s3.amazonaws.com/metro-extracts.nextzen.org/portland_oregon.osm.pbf"
+          "sourceURL": "http://maps7.trimet.org/or-wa.osm.pbf"
         }
       ],
       "leveldbpath": "/tmp",
       "datapath": "/data/openstreetmap",
       "import": [{
-        "filename": "portland_oregon.osm.pbf"
+        "filename": "or-wa.osm.pbf"
       }]
     },
     "openaddresses": {
       "datapath": "/data/openaddresses",
-      "files": [ "us/or/portland_metro.csv" ]
+      "files": [
+        "us/or/portland_metro.csv",
+        "us/or/city_of_salem.csv",
+        "us/or/marion_and_polk.csv",
+        "us/or/marion.csv",
+        "us/or/hood_river.csv",
+        "us/wa/city_of_richland.csv",
+        "us/wa/clark.csv"
+      ]
     },
     "polyline": {
       "datapath": "/data/polylines",
@@ -136,7 +151,10 @@
       "datapath": "/data/whosonfirst",
       "importVenues": false,
       "importPostalcodes": true,
-      "importPlace": ["101715829", "102081631", "102082215", "102082213"]
+      "importPlace": [
+        "85688513",
+        "85688623"
+      ]
     },
     "interpolation": {
       "download": {
