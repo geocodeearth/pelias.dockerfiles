@@ -28,6 +28,9 @@ docker-compose run -T --rm transit npm run download &
 
 wait;
 
+# apply postal cities fixes
+. ./postal_cities_fix.sh
+
 # polylines data prep requires openstreetmap data, so wait until that's done to start this
 # but then wait to run the polylines importer process until this is finished
 docker-compose run -T --rm polylines bash ./docker_extract.sh;
